@@ -88,7 +88,8 @@ class external extends \external_api {
         // Prepare prompt based on action.
         switch ($params['action']) {
             case 'explain':
-                $prompt = "You are a helpful educational assistant. Please explain this text in simple terms, making it easier to understand: {$params['text']}";
+                $prompt = "You are a helpful educational assistant.
+                Please explain this text in simple terms, making it easier to understand: {$params['text']}";
                 $action = new \core_ai\aiactions\generate_text(
                     contextid: $context->id,
                     userid: $USER->id,
@@ -96,7 +97,8 @@ class external extends \external_api {
                 );
                 break;
             case 'summarize':
-                $prompt = "You are a helpful educational assistant. Please provide a concise summary of this text, highlighting the key points: {$params['text']}";
+                $prompt = "You are a helpful educational assistant.
+                 Please provide a concise summary of this text, highlighting the key points: {$params['text']}";
                 $action = new \core_ai\aiactions\summarise_text(
                     contextid: $context->id,
                     userid: $USER->id,

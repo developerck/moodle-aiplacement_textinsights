@@ -44,7 +44,9 @@ class utils {
         $providers = manager::get_providers_for_actions([summarise_text::class], true);
         $gproviders = manager::get_providers_for_actions([generate_text::class], true);
         if (
-            !has_any_capability(['aiplacement/textinsights:useexplain', 'aiplacement/textinsights:useexplain', 'aiplacement/textinsights:useexplain'], $context)
+            !has_any_capability(['aiplacement/textinsights:useexplain',
+            'aiplacement/textinsights:useexplain',
+            'aiplacement/textinsights:useexplain'], $context)
             || !manager::is_action_available(summarise_text::class)
             || !manager::is_action_enabled('aiplacement_textinsights', summarise_text::class)
             || !manager::is_action_available(generate_text::class)
