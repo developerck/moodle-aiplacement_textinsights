@@ -14,23 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace aiplacement_textinsights;
-
 /**
- * Class placement.
+ * Hook callbacks for the text insights placement
  *
- * @package     aiplacement_textinsights
- * @copyright   2025 Developer Ck <developerck@gmail.com>
- * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    aiplacement_textinsights
+ * @copyright  2025 DeveloperCK <developerck@gmail.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class placement extends \core_ai\placement {
 
-    #[\Override]
-    public static function get_action_list(): array {
-        return [
-            \core_ai\aiactions\generate_text::class,
-            \core_ai\aiactions\summarise_text::class,
-        ];
-    }
 
-}
+defined('MOODLE_INTERNAL') || die();
+
+$callbacks = [
+    [
+        'hook' => \core\hook\output\before_standard_head_html_generation::class,
+        'callback' => \aiplacement_textinsights\hook_callbacks::class . '::before_standard_head_html_generation',
+        'priority' => 1,
+    ],
+];

@@ -40,17 +40,17 @@ class utils {
         if (!$manager::is_plugin_enabled($pluginname)) {
             return false;
         }
-
-        $providers = manager::get_providers_for_actions([summarise_text::class], true);
-        $gproviders = manager::get_providers_for_actions([generate_text::class], true);
+        $manager = \core\di::get(manager::class);
+        $providers = $manager->get_providers_for_actions([summarise_text::class], true);
+        $gproviders = $manager->get_providers_for_actions([generate_text::class], true);
         if (
             !has_any_capability(['aiplacement/textinsights:useexplain',
             'aiplacement/textinsights:useexplain',
             'aiplacement/textinsights:useexplain'], $context)
-            || !manager::is_action_available(summarise_text::class)
-            || !manager::is_action_enabled('aiplacement_textinsights', summarise_text::class)
-            || !manager::is_action_available(generate_text::class)
-            || !manager::is_action_enabled('aiplacement_textinsights', generate_text::class)
+            || !$manager->is_action_available(summarise_text::class)
+            || !$manager->is_action_enabled('aiplacement_textinsights', summarise_text::class)
+            || !$manager->is_action_available(generate_text::class)
+            || !$manager->is_action_enabled('aiplacement_textinsights', generate_text::class)
             || empty($providers[summarise_text::class])
             || empty($gproviders[generate_text::class])
         ) {

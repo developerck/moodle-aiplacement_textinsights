@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'aiplacement_textinsights';
-$plugin->release = '0.1.0';
-$plugin->version = 2025080100;
-$plugin->requires = 2024100700;
-$plugin->maturity = MATURITY_ALPHA;
+$plugin->release = '1.0';
+$plugin->version = 2025080101;
+$plugin->requires = 2025040800; // Requires Moodle 5.0 or later.
+$plugin->maturity = MATURITY_BETA;

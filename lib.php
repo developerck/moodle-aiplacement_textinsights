@@ -27,20 +27,21 @@
  *
  * @param moodle_page $page The current page
  */
-function aiplacement_textinsights_before_standard_html_head() {
+function aiplacement_textinsights_before_standard_html_head_generation() {
     global $COURSE, $PAGE;
-    $page = $PAGE;
+    $page = $PAGE;echo "a";die;
     $available = \aiplacement_textinsights\utils::is_textinsights_available($page->context);
     if (!$available) {
+     
             return; // No need to inject if the feature is not available.
     }
     if ($page->context->contextlevel === CONTEXT_COURSE ||
         $page->context->contextlevel === CONTEXT_MODULE) {
         // Check capabilities.
         $capabilities = [
-            'explain' => has_capability('local/textinsights:useexplain', $page->context),
-            'summarize' => has_capability('local/textinsights:usesummarize', $page->context),
-            'validate' => has_capability('local/textinsights:usevalidate', $page->context),
+            'explain' => has_capability('aiplacement/textinsights:useexplain', $page->context),
+            'summarize' => has_capability('aiplacement/textinsights:usesummarize', $page->context),
+            'validate' => has_capability('aiplacement/textinsights:usevalidate', $page->context),
         ];
         // Only proceed if user has at least one capability.
         if (array_filter($capabilities)) {

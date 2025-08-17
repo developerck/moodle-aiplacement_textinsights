@@ -76,7 +76,7 @@ class external extends \external_api {
             throw new \moodle_exception('notavailable', 'aiplacement_textinsights');
         }
 
-        $capability = "local/textinsights:use{$action}";
+        $capability = "aiplacement/textinsights:use{$action}";
         require_capability($capability, $context);
 
         // Length validation.
